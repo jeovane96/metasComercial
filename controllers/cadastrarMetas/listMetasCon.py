@@ -22,6 +22,9 @@ def selecionarMetas():
             user_insert                
         FROM 
             comercial_metas
+        ORDER BY
+            ID
+        ASC
     """)
     customerList = []
 

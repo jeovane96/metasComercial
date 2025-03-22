@@ -6,8 +6,9 @@ import pages.user.createUser             as CreateUsuario
 import pages.user.listUser               as ListUsuario
 import pages.cadastroMetas.createMetas   as createMetas
 import pages.cadastroMetas.listMetas     as listMetas
+import pages.cadastroMetas.updateMetas   as updateMetas
 
-create_tbl.criar_tabelas_db()
+# create_tbl.criar_tabelas_db()
 
 
 # --- Define layout baseado no login ---
@@ -229,14 +230,12 @@ def usuario_adm():
             ListUsuario.ListUsuarios()
 
     if st.session_state["active_page"] == "cadastrarMeta":
-        inserir, atualizar, deletar, consultar = st.tabs(["Inserir", "Atualizar", "Deletar", "Consultar"])
+        inserir, atualizar, consultar = st.tabs(["Inserir", "Atualizar", "Consultar"])
 
         with inserir:
             createMetas.createMeta()
         with atualizar:
-            None
-        with deletar:
-            None
+            updateMetas.updateMeta()
         with consultar:
             listMetas.ListMetas()
 

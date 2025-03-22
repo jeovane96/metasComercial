@@ -4,7 +4,7 @@ from datetime import timedelta
 import controllers.database as db
 import psycopg2
 
-def selecionarEmpreendimentoFiltro():
+def selecionarEmpreendimento():
     conn = psycopg2.connect(db.db_url)
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM empreendimento")

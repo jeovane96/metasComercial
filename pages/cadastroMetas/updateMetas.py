@@ -1,7 +1,7 @@
 import streamlit as st
 import models.sistema as sistema
 import pages.user.acesso as acesso
-import controllers.cadastrarMetas.cadastrarMetasCon as cadastrarMetasCon
+import controllers.cadastrarMetas.updateMetasCon as updateMetasCon
 import controllers.cadastrarMetas.listEmpreendimentoCon as listEmpreendimentoCon
 import time
 import streamlit as st
@@ -24,7 +24,7 @@ meses = [
 ]
 lista_meses_ano = [f"{mes}/{ano_atual}" for mes in meses]
 
-def createMeta():
+def updateMeta():
 
     st.markdown(
         """
@@ -73,26 +73,20 @@ def createMeta():
     col1, col2 = st.columns([2, 4])
 
     with col1:
-        input_periodo           = st.selectbox("**Período**", options=lista_meses_ano, key="selectbox_periodo_create") #produto
-        input_empreendimento    = st.selectbox("**Empreendimento**", options=empreendimento_, key="selectbox_empreendimento_create")
-        input_agrupamento       = st.text_input("**Agruamento do Empreendimento**", key="text_input_agrupamento")
-        input_meta              = st.text_input("**Meta**", value="") # , placeholder="Digite um número"
-        input_fl_considera_bi   = st.checkbox("**Considera no BI**", key="fl_considera_bi_create")
-        input_user              = st.text_input("**Usuário**", value=user, disabled=True, key="usuario_autenticado_create")
-        input_button_submit     = st.button("**Enviar**", key="button_create")
+        input_empreendimento    = st.selectbox("**Empreendimento**", options=empreendimento_, key="selectbox_empreendimento")
+        input_periodo           = st.selectbox("**Período**", options=lista_meses_ano, key="selectbox_periodo") #produto
+        input_agrupamento       = st.text_input("**Agruamento do Empreendimento**")
+        input_meta              = st.text_input("Meta", value="") # , placeholder="Digite um número"
+        input_fl_considera_bi   = st.checkbox("**Considera no BI**")
+        input_user              = st.text_input("**Usuário**", value=user, disabled=True, key="usuario_autenticado")
+        input_button_submit     = st.button("**Enviar**")
 
     with col2:
         None
         
     if input_button_submit:
         with st.spinner("Atualizando..."):    
-            sistema.periodo                     = input_periodo
-            sistema.empreendimento              = input_empreendimento
-            sistema.agrupamento_empreendimento  = input_agrupamento
-            sistema.meta                        = int(input_meta) 
-            sistema.fl_considera_bi             = input_fl_considera_bi
-            sistema.user                        = input_user
-            cadastrarMetasCon.insertMetas(sistema)
+            updateMetasCon.updateMetas(input_periodo, input_agrupamento, input_meta, input_fl_considera_bi, input_user, input_empreendimento)
             time.sleep(2) 
 
         success_container = st.empty()
