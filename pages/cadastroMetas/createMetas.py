@@ -96,6 +96,6 @@ def createMeta():
             time.sleep(2) 
 
     success_container = st.empty()
-    success_container.success(f"Meta do empreendimento **{input_empreendimento}** lançada!")  
+    st.success(f"Meta do empreendimento **{input_empreendimento}** lançada!")  
     time.sleep(2)
     success_container.empty()
