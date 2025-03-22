@@ -95,7 +95,7 @@ def createMeta():
             cadastrarMetasCon.insertMetas(sistema)
             time.sleep(2) 
 
-    success_container = st.empty()
-    st.success(f"Meta do empreendimento **{input_empreendimento}** lançada!")  
-    time.sleep(2)
-    success_container.empty()
+        success_container = st.empty()
+        st.success(f"Meta do empreendimento **{input_empreendimento}** lançada!")  
+        time.sleep(2)
+        success_container.empty()
