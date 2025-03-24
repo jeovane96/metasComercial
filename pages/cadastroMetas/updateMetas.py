@@ -76,7 +76,7 @@ def updateMeta():
         input_empreendimento    = st.selectbox("**Empreendimento**", options=empreendimento_, key="selectbox_empreendimento")
         input_periodo           = st.selectbox("**Período**", options=lista_meses_ano, key="selectbox_periodo") #produto
         input_agrupamento       = st.text_input("**Agruamento do Empreendimento**")
-        input_meta              = st.text_input("Meta", value="") # , placeholder="Digite um número"
+        input_meta              = st.text_input("**Meta**", value="") # , placeholder="Digite um número"
         input_fl_considera_bi   = st.checkbox("**Considera no BI**")
         input_user              = st.text_input("**Usuário**", value=user, disabled=True, key="usuario_autenticado")
         input_button_submit     = st.button("**Enviar**")

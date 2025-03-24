@@ -9,9 +9,9 @@ def selecionarMetas():
     cursor = conn.cursor()
     cursor.execute("""
         SELECT
-            id,                        
-            periodo,                   
-            empreendimento,            
+            id,                                         
+            empreendimento,        
+            periodo,     
             agrupamento_empreendimento,
             meta,   
             CASE 

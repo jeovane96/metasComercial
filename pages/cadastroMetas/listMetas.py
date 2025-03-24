@@ -9,8 +9,8 @@ def ListMetas():
         customerList.append(
             [
                 item.id, 
-                item.periodo,
                 item.empreendimento,
+                item.periodo,
                 item.agrupamento_empreendimento,
                 item.meta,
                 item.fl_considera_bi,
@@ -21,7 +21,7 @@ def ListMetas():
 
     df = pd.DataFrame(
         customerList,
-        columns=['ID', 'Período', 'Empreendimento', 'Agrupamento Empreendimento', 'Meta', 'Considera no BI', 'Data', 'Usuário']
+        columns=['ID', 'Empreendimento', 'Período', 'Agrupamento Empreendimento', 'Meta', 'Considera no BI', 'Data', 'Usuário']
     )
 
     table_html = df.to_html(index=False, classes="table", border=1)
