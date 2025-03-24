@@ -15,6 +15,17 @@ import pages.cadastroMetas.updateMetas   as updateMetas
 if "authenticated" in st.session_state and st.session_state["authenticated"]:
     st.set_page_config(layout="wide")  # Modo WIDE quando autenticado
 
+
+st.markdown(
+    """
+    <div style="text-align: center; margin-bottom: 10px; margin-top: -80px;">
+        <img src="https://catagua.com.br/wp-content/uploads/2022/01/cropped-catagua-construtora-180x50.png.webp" 
+             alt="Logo Catagua" style="width: 180px; height: auto;">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 st.markdown(
     """
     <style>
@@ -35,17 +46,17 @@ st.markdown(
         text-align: center;
         color: white;
         animation: glow 5s infinite alternate;
-        margin-top: 100px !important; /* Sobe o título mais */
-        margin-bottom: -90px !important;
+        margin-top: -30px !important; /* Sobe o título mais */
+        margin-bottom: -50px !important;
         padding: 0 !important;
         line-height: 1;
     }
 
-    /* Ajuste do layout principal (Remove espaços e sobe o sistema) */
+    /* Ajuste do layout principal (Remove espaços e sobe o sistema) 
     .block-container {
         padding-top: 0px !important;
         margin-top: -50px !important; /* Sobe mais */
-    }
+    }*/
 
     /* Ajuste do corpo da página */
     body {
@@ -99,6 +110,8 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+
 
 # Aplicar estilo personalizado
 st.markdown(
@@ -159,6 +172,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 # Pequeno espaço para ajuste
 st.write("")
