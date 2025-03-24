@@ -9,6 +9,32 @@ import time
 
 def Incluir_usuario():  
 
+    st.markdown(
+        """
+        <style>
+        /* Alterando o fundo do campo de texto (st.text_input) */
+        input[type="text"], input[type="number"] {
+            background-color: #D7D9DB !important; /* Cor de fundo */
+            color: #333 !important; /* Cor do texto */
+        }
+
+        /* Alterando o fundo do campo do selectbox */
+        div[data-baseweb="select"] > div {
+            background-color: #D7D9DB !important; /* Cor de fundo */
+        }
+
+        .stButton button:focus,
+        .stButton button:active {
+            background-color: black !important;
+            color: white !important;
+            border-color: black !important;
+        }
+
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
     def gerar_senha():
         tamanho_senha = 8
         caracteres = string.ascii_letters + string.digits  # Letras e números

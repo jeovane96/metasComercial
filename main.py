@@ -200,17 +200,41 @@ st.write("")
 
 def usuario_adm():
 
-    # Criar colunas para botões
-    col1, col2 = st.columns(2)
-    with col1:
-        st.sidebar.markdown("<span style='font-size:50px; font-weight:bold;'>⚙️ Menu</span>", unsafe_allow_html=True)
-        cadastrar_meta_button  = st.sidebar.button("Metas", key="cadastrar_meta")
-        incluir_usuario_button = st.sidebar.button("Usuário", key="cadastrar_usuario_button")
+    st.markdown(
+        """
+        <style>
+            .button-container {
+                display: flex;
+                justify-content: center; /* Centraliza os botões */
+                gap: 1px; /* Define o espaço entre os botões */
+            }
 
+            .stButton button {
+                width: 120px !important;  /* Define um tamanho fixo para os botões */
+                height: 35px !important;  /* Define uma altura menor */
+                font-size: 14px !important;
+                padding: 5px !important;
+                border-radius: 5px !important;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.markdown('<div class="button-container">', unsafe_allow_html=True)
+
+    col1, col2 = st.columns([0.03, 0.2])
+    with col1:
+        cadastrar_meta_button = st.button("📊 Metas", use_container_width=True)
+            
+    with col2:
+        incluir_usuario_button = st.button("👤 Usuário", use_container_width=True)
+
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # Armazenar estado atual no session_state
     if "active_page" not in st.session_state:
-        st.session_state["active_page"] = "listar"  # Página inicial padrão
+        st.session_state["active_page"] = "listar"
 
     # Navegar entre páginas com base nos botões
     elif incluir_usuario_button:
