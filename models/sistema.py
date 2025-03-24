@@ -6,10 +6,10 @@ class usuario:
         self.perfil = perfil
 
 class metas:
-    def __init__(self, id, periodo, empreendimento, agrupamento_empreendimento, meta, fl_considera_bi, dt_insert, user):
+    def __init__(self, id, empreendimento, periodo, agrupamento_empreendimento, meta, fl_considera_bi, dt_insert, user):
         self.id                         = id
-        self.periodo                    = periodo
         self.empreendimento             = empreendimento
+        self.periodo                    = periodo
         self.agrupamento_empreendimento = agrupamento_empreendimento
         self.meta                       = meta
         self.fl_considera_bi            = fl_considera_bi

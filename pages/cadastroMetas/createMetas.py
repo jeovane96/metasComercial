@@ -85,9 +85,13 @@ def createMeta():
         None
         
     if input_button_submit:
-        with st.spinner("Atualizando..."):    
+
+        if cadastrarMetasCon.validacaoInsertEmpreendimento(input_empreendimento, input_periodo):
+            return st.error(f"Meta do empreendimento **{input_empreendimento}** no período de **{input_periodo}** já lançado!")
+
+        with st.spinner("Atualizando..."):   
+            sistema.empreendimento              = input_empreendimento 
             sistema.periodo                     = input_periodo
-            sistema.empreendimento              = input_empreendimento
             sistema.agrupamento_empreendimento  = input_agrupamento
             sistema.meta                        = int(input_meta) 
             sistema.fl_considera_bi             = input_fl_considera_bi

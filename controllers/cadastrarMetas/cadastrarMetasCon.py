@@ -43,3 +43,13 @@ def insertMetas(insert_metas):
     finally:
         cursor.close()
         conn.close()
+
+
+def validacaoInsertEmpreendimento(empreendimento, periodo):
+    conn   = psycopg2.connect(db.db_url)
+    cursor = conn.cursor()
+    query  = "SELECT * FROM comercial_metas WHERE empreendimento =%s AND periodo =%s"
+    cursor.execute(query, (empreendimento, periodo))
+    validacao = cursor.fetchall()
+    conn.commit()
+    return validacao

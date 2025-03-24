@@ -73,23 +73,23 @@ def updateMeta():
     col1, col2 = st.columns([2, 4])
 
     with col1:
-        input_empreendimento    = st.selectbox("**Empreendimento**", options=empreendimento_, key="selectbox_empreendimento")
-        input_periodo           = st.selectbox("**Período**", options=lista_meses_ano, key="selectbox_periodo") #produto
-        input_agrupamento       = st.text_input("**Agruamento do Empreendimento**")
-        input_meta              = st.text_input("**Meta**", value="") # , placeholder="Digite um número"
-        input_fl_considera_bi   = st.checkbox("**Considera no BI**")
+        input_empreendimento    = st.selectbox("**Empreendimento**", options=empreendimento_, key="update_empreendimento")
+        input_periodo           = st.selectbox("**Período**", options=lista_meses_ano, key="update_periodo") #produto
+        input_agrupamento       = st.text_input("**Agruamento do Empreendimento**", key="update_agrupamento")
+        input_meta              = st.text_input("**Meta**", value="", key="update_meta") # , placeholder="Digite um número"
+        input_fl_considera_bi   = st.checkbox("**Considera no BI**", key="update_considera_bi")
         input_user              = st.text_input("**Usuário**", value=user, disabled=True, key="usuario_autenticado")
-        input_button_submit     = st.button("**Enviar**")
+        input_button_submit     = st.button("**Enviar**", key="update_botao")
 
     with col2:
         None
         
     if input_button_submit:
         with st.spinner("Atualizando..."):    
-            updateMetasCon.updateMetas(input_periodo, input_agrupamento, input_meta, input_fl_considera_bi, input_user, input_empreendimento)
+            updateMetasCon.updateMetas(input_agrupamento, input_meta, input_fl_considera_bi, input_user, input_empreendimento, input_periodo)
             time.sleep(2) 
 
         success_container = st.empty()
-        st.success(f"Meta do empreendimento **{input_empreendimento}** lançada!")  
+        st.success(f"Meta do empreendimento **{input_empreendimento}** atualizada!")  
         time.sleep(2)
         success_container.empty()
