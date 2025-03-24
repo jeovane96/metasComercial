@@ -60,9 +60,9 @@ st.markdown(
 
     /* Estilizar os botões */
     .stButton button {
-        border: 2px solid black;
-        background-color: #AFE6FF;
-        color: black;
+        border: 2px solid #5DB5FD;
+        background-color: #5DB5FD;
+        color: white;
         padding: 5px 12px;
         border-radius: 12px;
         cursor: pointer;

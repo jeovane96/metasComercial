@@ -39,7 +39,7 @@ def ListMetas():
                 border-collapse: collapse;
             }
             .table th {
-                background-color: #64A9DA;
+                background-color: black;
                 color: white;
                 padding: 10px;
                 text-align: center;  /* CENTRALIZA OS CABEÇALHOS */
