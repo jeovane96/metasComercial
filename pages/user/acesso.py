@@ -59,7 +59,7 @@ def authenticate_user():
             None
 
         with col2:
-            email        = st.text_input("**Usuário**", key="login_email")
+            email        = st.text_input("**E-mail**", key="login_email")
             password     = st.text_input("**Senha**", type="password", key="login_password")
             login_button = st.button("Entrar")
 
