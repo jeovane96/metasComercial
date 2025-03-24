@@ -88,6 +88,9 @@ def createMeta():
 
         if cadastrarMetasCon.validacaoInsertEmpreendimento(input_empreendimento, input_periodo):
             return st.error(f"Meta do empreendimento **{input_empreendimento}** no período de **{input_periodo}** já lançado!")
+        
+        if input_meta == "":
+            return st.error("O campo da meta está sem valor")
 
         with st.spinner("Atualizando..."):   
             sistema.empreendimento              = input_empreendimento 

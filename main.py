@@ -60,9 +60,9 @@ st.markdown(
 
     /* Estilizar os botões */
     .stButton button {
-        border: 2px solid #C6C8C6;
-        background-color: black;
-        color: white;
+        border: 2px solid black;
+        background-color: #AFE6FF;
+        color: black;
         padding: 5px 12px;
         border-radius: 12px;
         cursor: pointer;
@@ -71,8 +71,8 @@ st.markdown(
     }
 
     .stButton button:hover {
-        background-color: #D9D9D9;
-        color: black;
+        background-color: black;
+        color: white;
         border-color: #D9D9D9;
     }
 
@@ -93,40 +93,6 @@ st.markdown(
         z-index: 1000;
     }
 
-    /* Estilizar a sidebar */
-    section[data-testid="stSidebar"] {
-        background-color: #F8F9FA;
-    }
-
-    .stSidebar .stMarkdown span {
-        font-size: 18px !important;
-        font-weight: bold;
-        color: #000000;
-        text-align: center;
-    }
-
-    .stSidebar button {
-        width: 90% !important;
-        height: 40px !important;
-        border: 2px solid #D9D9D9;
-        background-color: #D9D9D9;
-        color: black;
-        border-radius: 8px;
-        font-size: 16px;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .stSidebar button:hover {
-        background-color: black;
-        color: white;
-    }
-
-    .stSidebar button:focus,
-    .stSidebar button:active {
-        background-color: black !important;
-        color: white !important;
-        border-color: black !important;
-    }
     </style>
 
     <h1 class='glowing-text'> Metas de Venda </h1>
