@@ -73,8 +73,8 @@ def createMeta():
     col1, col2 = st.columns([2, 4])
 
     with col1:
-        input_periodo           = st.selectbox("**Período**", options=lista_meses_ano, key="selectbox_periodo_create") #produto
         input_empreendimento    = st.selectbox("**Empreendimento**", options=empreendimento_, key="selectbox_empreendimento_create")
+        input_periodo           = st.selectbox("**Período**", options=lista_meses_ano, key="selectbox_periodo_create") #produto
         input_agrupamento       = st.text_input("**Agruamento do Empreendimento**", key="text_input_agrupamento")
         input_meta              = st.text_input("**Meta**", value="") # , placeholder="Digite um número"
         input_fl_considera_bi   = st.checkbox("**Considera no BI**", key="fl_considera_bi_create")
