@@ -104,6 +104,48 @@ st.markdown(
         z-index: 1000;
     }
 
+    /* Esconde o fundo padrão das abas */
+    div[data-testid="stTab"] {
+        background-color: transparent;
+    }
+
+    /* Estiliza as abas */
+    button[data-baseweb="tab"] {
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 10px 10px 0 0;
+        background-color: #D9D9D9;
+        color: black;
+        padding: 10px 20px;
+        transition: 0.3s;
+    }
+
+    /* Aba ativa */
+    button[data-baseweb="tab"][aria-selected="true"] {
+        background-color: black;
+        color: white;
+        border-bottom: 2px solid white;
+    }
+
+    /* Hover nas abas */
+    button[data-baseweb="tab"]:hover {
+        background-color: #B0B0B0;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center; /* Centraliza os botões */
+        gap: 1px; /* Define o espaço entre os botões */
+    }
+
+    .stButton button {
+        width: 120px !important;  /* Define um tamanho fixo para os botões */
+        height: 35px !important;  /* Define uma altura menor */
+        font-size: 14px !important;
+        padding: 5px !important;
+        border-radius: 5px !important;
+    }
+
     </style>
 
     <h1 class='glowing-text'> Metas de Venda </h1>
@@ -111,45 +153,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-
-# Aplicar estilo personalizado
-st.markdown(
-    """
-    <style>
-        /* Esconde o fundo padrão das abas */
-        div[data-testid="stTab"] {
-            background-color: transparent;
-        }
-
-        /* Estiliza as abas */
-        button[data-baseweb="tab"] {
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 10px 10px 0 0;
-            background-color: #D9D9D9;
-            color: black;
-            padding: 10px 20px;
-            transition: 0.3s;
-        }
-
-        /* Aba ativa */
-        button[data-baseweb="tab"][aria-selected="true"] {
-            background-color: black;
-            color: white;
-            border-bottom: 2px solid white;
-        }
-
-        /* Hover nas abas */
-        button[data-baseweb="tab"]:hover {
-            background-color: #B0B0B0;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-st.markdown(
+st.markdown( # Nome do usuário que está acessando o sistema no canto direito
     f"""
     <style>
         .header-container {{
@@ -180,27 +184,6 @@ st.write("")
 
 def usuario_adm():
 
-    st.markdown(
-        """
-        <style>
-            .button-container {
-                display: flex;
-                justify-content: center; /* Centraliza os botões */
-                gap: 1px; /* Define o espaço entre os botões */
-            }
-
-            .stButton button {
-                width: 120px !important;  /* Define um tamanho fixo para os botões */
-                height: 35px !important;  /* Define uma altura menor */
-                font-size: 14px !important;
-                padding: 5px !important;
-                border-radius: 5px !important;
-            }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
     st.markdown('<div class="button-container">', unsafe_allow_html=True)
 
     col1, col2 = st.columns([0.03, 0.2])
@@ -212,20 +195,15 @@ def usuario_adm():
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # Armazenar estado atual no session_state
     if "active_page" not in st.session_state:
         st.session_state["active_page"] = "listar"
-
-    # Navegar entre páginas com base nos botões
     elif incluir_usuario_button:
         st.session_state["active_page"] = "cadastrarUsuario"
     elif cadastrar_meta_button:
         st.session_state["active_page"] = "cadastrarMeta"
 
-    # AÇÃO DE CADA BOTÃO
     if st.session_state["active_page"] == "cadastrarUsuario":
         inserir, deletar, consultar = st.tabs(["Inserir", "Deletar", "Consultar"])
-
         with inserir:
             CreateUsuario.Incluir_usuario()
         with deletar:
@@ -235,7 +213,6 @@ def usuario_adm():
 
     if st.session_state["active_page"] == "cadastrarMeta":
         inserir, atualizar, consultar = st.tabs(["Inserir", "Atualizar", "Consultar"])
-
         with inserir:
             createMetas.createMeta()
         with atualizar:
@@ -243,8 +220,6 @@ def usuario_adm():
         with consultar:
             listMetas.ListMetas()
 
-
-# Verifica se o usuário está autenticado
 if ValidacaoUsuario.authenticate_user():
     if "just_logged_in" not in st.session_state:
         st.session_state["just_logged_in"] = True
