@@ -51,6 +51,8 @@ def ListMetas():
     if periodo_filtro != 'Todas':
         df = df[df['Período'] == periodo_filtro]
 
+    df = df[['Empreendimento', 'Período', 'Agrupamento Empreendimento', 'Meta', 'Considera no BI', 'Data', 'Usuário']]
+
     table_html = df.to_html(index=False, classes="table", border=1)
 
     st.markdown("""
