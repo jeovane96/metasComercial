@@ -8,14 +8,13 @@ def ListUsuarios():
     for item in ControllerSistema.selecionarTodosUsuarios():
         customerList.append([
             item.id, 
-            item.email, 
-            item.senha, 
+            item.email,  
             item.perfil
         ])
 
     df = pd.DataFrame(
         customerList,
-        columns=['ID', 'E-mail', 'Senha', 'Perfil']
+        columns=['ID', 'E-mail', 'Perfil']
     )
 
     table_html = df.to_html(index=False, classes="table", border=1)
