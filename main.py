@@ -16,21 +16,21 @@ if "authenticated" in st.session_state and st.session_state["authenticated"]:
     st.set_page_config(layout="wide")  # Modo WIDE quando autenticado
 
 
-st.markdown(
-    """
+import streamlit as st
+
+# Exibir a logo
+st.markdown("""
     <div style="text-align: center; margin-bottom: 10px; margin-top: -80px;">
         <img src="https://catagua.com.br/wp-content/uploads/2022/01/cropped-catagua-construtora-180x50.png.webp" 
              alt="Logo Catagua" style="width: 180px; height: auto;">
     </div>
-    """,
-    unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
 
-st.markdown(
-    """
+# CSS otimizado
+st.markdown("""
     <style>
     /* Esconder a barra branca do Streamlit */
-    header {visibility: hidden;}
+    header { visibility: hidden; }
 
     /* Animação de brilho do título */
     @keyframes glow {
@@ -46,70 +46,43 @@ st.markdown(
         text-align: center;
         color: white;
         animation: glow 5s infinite alternate;
-        margin-top: -30px !important; /* Sobe o título mais */
-        margin-bottom: -50px !important;
-        padding: 0 !important;
+        margin: -30px 0 -50px 0 !important;
         line-height: 1;
     }
 
-    /* Ajuste do layout principal (Remove espaços e sobe o sistema) 
-    .block-container {
-        padding-top: 0px !important;
-        margin-top: -50px !important; /* Sobe mais */
-    }*/
-
-    /* Ajuste do corpo da página */
-    body {
-        padding-top: 0px !important;
-        margin-top: -100px !important; /* Sobe ainda mais */
-    }
-
     /* Cor de fundo da aplicação */
-    .stApp {
-        background-color: #F1F5F9;
-    }
+    .stApp { background-color: #F1F5F9; }
 
     /* Estilizar os botões */
     .stButton button {
-        border: 2px solid #5DB5FD;
-        background-color: #5DB5FD;
+        border: 2px solid #286398;
+        background-color: #286398;
         color: white;
         padding: 5px 12px;
         border-radius: 12px;
         cursor: pointer;
         font-size: 16px;
         transition: all 0.3s ease;
+        width: 120px !important;
+        height: 35px !important;
     }
 
     .stButton button:hover {
         background-color: black;
-        color: white;
         border-color: #D9D9D9;
     }
 
-    .stButton button:focus {
-        outline: none;
+    /* Remover efeito vermelho ao clicar */
+    .stButton button:focus, .stButton button:active {
+        outline: none !important;
+        box-shadow: none !important;
+        background-color: #286398 !important;
+        border-color: #286398 !important;
     }
 
-    /* Estilizar o rodapé fixo */
-    .fixed-footer {
-        position: fixed;
-        bottom: 10px;
-        right: 10px;
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 5px 10px;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        font-size: 14px;
-        z-index: 1000;
-    }
+    /* Ajuste do layout das abas */
+    div[data-testid="stTab"] { background-color: transparent; }
 
-    /* Esconde o fundo padrão das abas */
-    div[data-testid="stTab"] {
-        background-color: transparent;
-    }
-
-    /* Estiliza as abas */
     button[data-baseweb="tab"] {
         font-size: 18px;
         font-weight: bold;
@@ -128,54 +101,45 @@ st.markdown(
     }
 
     /* Hover nas abas */
-    button[data-baseweb="tab"]:hover {
-        background-color: #B0B0B0;
+    button[data-baseweb="tab"]:hover { background-color: #B0B0B0; }
+
+    /* Rodapé fixo */
+    .fixed-footer {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 5px 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        font-size: 14px;
+        z-index: 1000;
     }
 
-    .button-container {
+    /* Nome do usuário no canto direito */
+    .header-container {
         display: flex;
-        justify-content: center; /* Centraliza os botões */
-        gap: 1px; /* Define o espaço entre os botões */
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px 10px;
     }
 
-    .stButton button {
-        width: 120px !important;  /* Define um tamanho fixo para os botões */
-        height: 35px !important;  /* Define uma altura menor */
-        font-size: 14px !important;
-        padding: 5px !important;
-        border-radius: 5px !important;
+    .user-info {
+        font-size: 14px;
+        font-weight: normal;
+        color: #CBCBCB;
     }
-
     </style>
 
     <h1 class='glowing-text'> Metas de Venda </h1>
-    """,
-    unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
 
-st.markdown( # Nome do usuário que está acessando o sistema no canto direito
-    f"""
-    <style>
-        .header-container {{
-            display: flex;
-            justify-content: flex-end; /* Move o nome do usuário para o canto direito */
-            align-items: center;
-            padding: 10px 10px;
-        }}
-
-        .user-info {{
-            font-size: 14px;
-            font-weight: normal;
-            color: #CBCBCB;
-        }}
-    </style>
-
+# Exibir o nome do usuário no canto direito
+st.markdown(f"""
     <div class="header-container">
         <div class="user-info">🔑 {st.session_state.get("user", "Desconhecido")}</div>
     </div>
-    """,
-    unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
 
 
 # Pequeno espaço para ajuste
